@@ -21,3 +21,7 @@ def to_underscore(string):
         else:
             snake.append(i)
     return ''.join(snake).lstrip('_')
+
+
+print(to_underscore('TestController'))  # test_controller
+print(to_underscore('App7Test'))  # app7_test
