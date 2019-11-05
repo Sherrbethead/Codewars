@@ -8,23 +8,22 @@ an array of the first n prime numbers."""
 
 class Primes(object):
     cache = [2]
-
-    @staticmethod
-    def is_prime(ch):
-        for i in range(2, ch // 2 + 1):
-            if not ch % i:
-                return False
-        return True
+    checking = 3
 
     @classmethod
     def first(cls, n):
-        checking = 3
-        if len(cls.cache) > 1:
-            checking = cls.cache[-1] + 2
         while len(cls.cache) < n:
-            if cls.is_prime(checking):
-                cls.cache.append(checking)
-            checking += 2
+            is_prime = True
+            i = 0
+            root = cls.checking ** 0.5 + 1
+            while i < len(cls.cache) and cls.cache[i] <= root:
+                if not cls.checking % cls.cache[i]:
+                    is_prime = False
+                    break
+                i += 1
+            if is_prime:
+                cls.cache.append(cls.checking)
+            cls.checking += 2
         return cls.cache[:n]
 
 
