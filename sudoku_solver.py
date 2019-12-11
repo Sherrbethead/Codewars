@@ -1,10 +1,14 @@
-'''Description
+"""
+Description
 
-Write a function that will solve a 9x9 Sudoku puzzle. The function will take one argument consisting of the 2D puzzle
-array, with the value 0 representing an unknown square.
-The Sudokus tested against your function will be "easy" (i.e. determinable; there will be no need to assume and
-test possibilities on unknowns) and can be solved with a brute-force approach.
-For Sudoku rules, see the Wikipedia article.'''
+Write a function that will solve a 9x9 Sudoku puzzle. The function will take one
+argument consisting of the 2D puzzle array, with the value 0 representing an
+unknown square.
+The Sudokus tested against your function will be "easy" (i.e. determinable;
+there will be no need to assume and test possibilities on unknowns) and can be
+solved with a brute-force approach.
+For Sudoku rules, see the Wikipedia article.
+"""
 
 
 def fill(puzzle):
@@ -14,15 +18,17 @@ def fill(puzzle):
                 return i, j
     return -1, -1
 
+
 def check(puzzle, i, j, n):
     square = list()
     if all([n != puzzle[i][row] for row in range(9)]):
         if all([n != puzzle[col][j] for col in range(9)]):
-            for sqr in puzzle[(i//3)*3:((i//3)+1)*3]:
-                square += sqr[(j//3)*3:((j//3)+1)*3]
+            for sqr in puzzle[(i // 3) * 3:((i // 3) + 1) * 3]:
+                square += sqr[(j // 3) * 3:((j // 3) + 1) * 3]
             if n not in square:
                 return True
     return False
+
 
 def sudoku(puzzle):
     i, j = fill(puzzle)
@@ -45,6 +51,7 @@ print(sudoku([[5,3,0,0,7,0,0,0,0],    # [[5, 3, 4, 6, 7, 8, 9, 1, 2],
               [0,6,0,0,0,0,2,8,0],    #  [9, 6, 1, 5, 3, 7, 2, 8, 4],
               [0,0,0,4,1,9,0,0,5],    #  [2, 8, 7, 4, 1, 9, 6, 3, 5],
               [0,0,0,0,8,0,0,7,9]]))  #  [3, 4, 5, 2, 8, 6, 1, 7, 9]]
+
 print(sudoku([[9,0,8,3,0,7,0,0,0],    # [[9, 6, 8, 3, 4, 7, 1, 5, 2],
               [5,2,0,0,8,0,7,0,0],    #  [5, 2, 4, 9, 8, 1, 7, 3, 6],
               [0,0,0,0,6,0,8,4,9],    #  [3, 1, 7, 2, 6, 5, 8, 4, 9],
